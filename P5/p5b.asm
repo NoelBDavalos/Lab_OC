@@ -2,7 +2,7 @@
 								; que se encuentran en la biblioteca libpc_io.a
 
 section	.text
-	global _start       ;referencia para inicio de programa
+	global _start       ;referencia para inicio de programaSS
 	
 _start:                   
 	mov edx, msg		; edx = dirección de la cadena msg
