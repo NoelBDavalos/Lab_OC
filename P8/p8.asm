@@ -57,22 +57,24 @@ _start:
         call puts
 
 .incisoC:
-    mov CX, 3
-    .loop_i:
+    mov CX, 4
+    .C_loop_i:
         mov BX, CX
-        .loop_j:
-        mov AL, asterisco
+        .C_loop_j:
+        mov AL, '*'
         call putchar
         dec BX
         cmp BX, 0
-        ja .loop_j
-        mov AL, salto
+        ja .C_loop_j
+        mov AL, 10
         call putchar
         dec CX
         cmp CX, 0
-        ja .loop_i
-        
+        ja .C_loop_i
 
+.incisoD:
+    mov CX, 10
+    .D
 
 ; Fin del programa
 
@@ -85,5 +87,3 @@ A_MsgMenor db 'El caracter es menor que m',0xa,0
 B_es_letra db 'El caracter es una letra',0xa,0
 B_es_numero db 'El caracter es un numero',0xa,0
 B_no_en_rango db 'El caracter debe estar en rango [0-9] o [A-Z]',0xa,0
-asterisco dn '*',0
-salto dn 0xa,0
