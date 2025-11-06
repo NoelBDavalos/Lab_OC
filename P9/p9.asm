@@ -24,11 +24,12 @@ _start:
     mov edx, V2
     .loop_P_Escalar:
         mov al, [ebx]
-        mul al, [edx]
-        add al, [P_Escalar]
+        mul Byte[edx]
+        add ax, [P_Escalar]
         mov [P_Escalar], ax
         inc ebx
-        inc edx 
+        inc edx
+        loop .loop_P_Escalar 
 
     mov ecx, N
     mov ebx, V1
@@ -38,6 +39,10 @@ _start:
     mov ecx, N
     mov ebx, V1
     call Desplegar
+
+    mov ax, [P_Escalar]
+    call pHex_w
+    call C_Linea
 
     ; Fin del programa
     mov eax, 1              ;system call number (sys_exit) -- fin del programa
