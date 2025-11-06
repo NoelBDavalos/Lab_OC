@@ -61,11 +61,11 @@ _start:
     .C_loop_i:
         mov BX, CX
         .C_loop_j:
-        mov AL, '*'
-        call putchar
-        dec BX
-        cmp BX, 0
-        ja .C_loop_j
+            mov AL, '*'
+            call putchar
+            dec BX
+            cmp BX, 0
+            ja .C_loop_j
         mov AL, 10
         call putchar
         dec CX
@@ -73,8 +73,31 @@ _start:
         ja .C_loop_i
 
 .incisoD:
-    mov CX, 10
-    .D
+    mov ECX, 10
+    mov ESI, arreglo
+
+    .D_captura:
+        call getche
+        mov [esi], al
+        inc esi
+        loop .D_captura
+        
+    mov al, 10          ;cambio de linea
+    call putchar
+        
+    mov edx, msg_datos  ; mostrar mensaje "Datos capturados"
+    call puts
+
+    mov ecx, 10
+    mov esi, arreglo
+
+    .D_imprimir:
+        mov al, [esi]            ; cargar caracter
+        call putchar
+        mov al, 10               ; salto de línea
+        call putchar
+        inc esi
+        loop .D_imprimir
 
 ; Fin del programa
 
@@ -87,3 +110,5 @@ A_MsgMenor db 'El caracter es menor que m',0xa,0
 B_es_letra db 'El caracter es una letra',0xa,0
 B_es_numero db 'El caracter es un numero',0xa,0
 B_no_en_rango db 'El caracter debe estar en rango [0-9] o [A-Z]',0xa,0
+msg_datos db 'Datos capturados:',0xa,0
+arreglo db 0,0,0,0,0,0,0,0,0,0      ;arreglo de 10 caracteres
