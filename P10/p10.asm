@@ -32,3 +32,6 @@ strlenn:
     mov eax, ecx
     pop ebp
     ret
+
+getBit:
+    
