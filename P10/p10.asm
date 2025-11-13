@@ -29,5 +29,6 @@ strlenn:
         inc ecx
         jmp .contar
     fin:
+    mov eax, ecx
     pop ebp
     ret
